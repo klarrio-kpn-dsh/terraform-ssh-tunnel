@@ -140,3 +140,15 @@ variable "type" {
   description = "Gateway type"
   default     = "ssh"
 }
+
+variable "azure_subscription" {
+  type        = string
+  description = "The subscription to use for to connect to the azure bastion"
+  default     = ""
+}
+
+variable "azure_resource_group" {
+  type        = string
+  description = "The resource group to use of the azure bastion"
+  default     = ""
+}
