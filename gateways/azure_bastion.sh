@@ -23,6 +23,6 @@ az network bastion tunnel \
     --resource-group ${AZURE_RESOURCE_GROUP} \
     --target-resource-id "${TUNNEL_TARGET_HOST}" \
     --resource-port ${TUNNEL_TARGET_PORT} \
-    --port ${LOCAL_PORT_SSH} &
+    --port ${TUNNEL_LOCAL_PORT} &
 
 TUNNEL_PID=$!
