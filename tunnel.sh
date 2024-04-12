@@ -100,13 +100,13 @@ if [ -z "$TUNNEL_TF_PID" ] ; then
 
     # Set AZURE_SUBSCRIPTION only if var is not empty
   AZURE_SUBSCRIPTION="$(echo "$query" | sed -e 's/^.*\"azure_subscription\": *\"//' -e 's/\",.*$//g' -e 's/\\\"/\"/g')"
-  if [ -n "$profile" ] ; then
+  if [ -n "$AZURE_SUBSCRIPTION" ] ; then
     export AZURE_SUBSCRIPTION
   fi
 
   # Set AZURE_RESOURCE_GROUP only if var is not empty
   AZURE_RESOURCE_GROUP="$(echo "$query" | sed -e 's/^.*\"azure_resource_group\": *\"//' -e 's/\",.*$//g' -e 's/\\\"/\"/g')"
-  if [ -n "$profile" ] ; then
+  if [ -n "$AZURE_RESOURCE_GROUP" ] ; then
     export AZURE_RESOURCE_GROUP
   fi
 
