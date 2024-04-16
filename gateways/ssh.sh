@@ -7,7 +7,6 @@ gw="$TUNNEL_GATEWAY_HOST"
 # if not empty
 if [ -n "$SSH_KEY" ]; then
   KEY_FILE=$(mktemp --suffix=.pem)
-  trap 'rm -f -- "$KEY_FILE"' EXIT
   echo "${SSH_KEY@E}" > "$KEY_FILE"
   chmod 600 "$KEY_FILE"
   SSH_KEY_PARAM="-i $KEY_FILE"
@@ -21,3 +20,6 @@ $TUNNEL_SSH_CMD \
   "$gw" &
 
 TUNNEL_PID=$!
+if [ -n "$SSH_KEY" ]; then
+  (wait $TUNNEL_PID;  rm -f --$KEY_FILE)&
+fi
