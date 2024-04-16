@@ -10,6 +10,8 @@ if [ -n "$SSH_KEY" ]; then
   echo "${SSH_KEY@E}" > "$KEY_FILE"
   chmod 600 "$KEY_FILE"
   SSH_KEY_PARAM="-i $KEY_FILE"
+
+  TUNNEL_TODELETE="$KEY_FILE"
 fi
 
 $TUNNEL_SSH_CMD \
@@ -20,6 +22,3 @@ $TUNNEL_SSH_CMD \
   "$gw" &
 
 TUNNEL_PID=$!
-if [ -n "$SSH_KEY" ]; then
-  (wait $TUNNEL_PID;  rm -f --$KEY_FILE)&
-fi
