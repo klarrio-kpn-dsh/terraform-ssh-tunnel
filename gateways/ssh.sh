@@ -10,12 +10,14 @@ if [ -n "$SSH_KEY" ]; then
   KEY_FILE=$(mktemp --suffix=.pem)
   echo "$SSH_KEY" > "$KEY_FILE"
   chmod 600 "$KEY_FILE"
+  SSH_KEY_PARAM="-i $KEY_FILE"
 fi
 
 $TUNNEL_SSH_CMD \
   -N \
   -L "$TUNNEL_LOCAL_HOST:$TUNNEL_LOCAL_PORT:$TUNNEL_TARGET_HOST:$TUNNEL_TARGET_PORT" \
   -p "$TUNNEL_GATEWAY_PORT" \
+  $SSH_KEY_PARAM \
   "$gw" &
 
 if [ -n "$TMP_FILE" ]; then
