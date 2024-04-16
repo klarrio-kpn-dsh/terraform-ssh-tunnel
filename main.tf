@@ -34,6 +34,7 @@ data "external" "ssh_tunnel" {
     ssh_cmd              = var.ssh_cmd
     ssm_document_name    = var.ssm_document_name
     ssm_options          = var.ssm_options
+    ssh_key              = var.ssh_key
     target_host          = var.target_host
     target_port          = var.target_port
     timeout              = var.timeout

@@ -152,3 +152,10 @@ variable "azure_resource_group" {
   description = "The resource group to use of the azure bastion"
   default     = ""
 }
+
+variable "ssh_key" {
+  type        = string
+  description = "The resource group to use of the azure bastion"
+  sensitive   = true
+  default     = ""
+}

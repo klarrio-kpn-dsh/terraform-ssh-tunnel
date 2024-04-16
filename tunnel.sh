@@ -83,7 +83,7 @@ if [ -z "$TUNNEL_TF_PID" ] ; then
   export TUNNEL_CHECK_SLEEP
   TUNNEL_TYPE="$(echo "$query" | sed -e 's/^.*\"type\": *\"//' -e 's/\".*$//g')"
   export TUNNEL_TYPE
-
+  export SSH_KEY="$(echo "$query" | sed -e 's/^.*\"ssh_key\": *\"//' -e 's/\".*$//g')"
 
   # Set AWS_PROFILE only if var is not empty
   profile="$(echo "$query" | sed -e 's/^.*\"aws_profile\": *\"//' -e 's/\",.*$//g' -e 's/\\\"/\"/g')"
