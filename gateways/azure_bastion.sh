@@ -13,7 +13,7 @@ fi
 
 
 if [ "$(az extension list | jq '.[] | select(.name == "bastion")')" == "" ]; then
-    echo "Installing az bastion extension"
+    echo "Installing az bastion extension" >&2
     az extension add --name bastion --allow-preview false
 fi
 
